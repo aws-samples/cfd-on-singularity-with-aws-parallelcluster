@@ -10,7 +10,7 @@ The recommended way of deploying an AWS ParallelCluster environment is by using 
 Follow the steps [here](https://github.com/aws-samples/pcluster-manager/blob/main/README.md) to create your AWS ParallelCluster environment. 
 
 You will need to create a cluster with the following configuration:
-- Slurm scheduler 
+- Slurm scheduler  
 - An EBS volume for static data (in this example we will name it /shared)
 - An FSx for Lustre volume for dynamic data (in this example we will name it /scratch)
 - A queue with at least 4x c5n.18xlarge instances (in this example we will name it "c5n")
