@@ -33,7 +33,7 @@ We will start by updating the **singularity.conf** file with the file systems we
 vi /shared/singularity-ce-{$VERSION}/etc/singularity/singularity.conf
 ```
 
-Add the following lines in the session "BIND PATH: [STRING]"
+Add the following lines under the session "BIND PATH: [STRING]"
 
 ```bash
 bind path = /scratch
