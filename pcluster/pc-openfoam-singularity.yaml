@@ -48,5 +48,4 @@ SharedStorage:
     FsxLustreSettings:
       StorageCapacity: 1200
       DeploymentType: SCRATCH_2
-      DataCompressionType: LZ4
       ImportPath: s3:<PATH-TO-IMPORT-FILES>
