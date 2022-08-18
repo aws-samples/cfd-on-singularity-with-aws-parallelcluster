@@ -59,7 +59,7 @@ In the container, execute the following to install all the dependencies on the c
 apt-get install -y build-essential flex bison cmake zlib1g-dev libboost-system-dev libboost-thread-dev libopenmpi-dev openmpi-bin gnuplot libreadline-dev libncurses-dev libxt-dev qt4-dev-tools libqt4-dev libqt4-opengl-dev freeglut3-dev libqtwebkit-dev libscotch-dev libcgal-dev gcc g++ gfortran curl vim cmake wget
 ```
 
-Now install the [EFA](https://aws.amazon.com/hpc/efa/) driver. With EFA, High Performance Computing (HPC) applications using the Message Passing Interface (MPI) and Machine Learning (ML) applications using NVIDIA Collective Communications Library (NCCL) can scale to thousands of CPUs or GPUs.
+Now we install the [EFA](https://aws.amazon.com/hpc/efa/) driver. With EFA, High Performance Computing (HPC) applications using the Message Passing Interface (MPI) and Machine Learning (ML) applications using NVIDIA Collective Communications Library (NCCL) can scale to thousands of CPUs or GPUs.
 
 ```bash
 curl -O https://efa-installer.amazonaws.com/aws-efa-installer-1.12.3.tar.gz
