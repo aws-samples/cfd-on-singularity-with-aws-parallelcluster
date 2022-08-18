@@ -1,0 +1,52 @@
+Region: <REGION>
+Image:
+  Os: alinux2
+HeadNode:
+  InstanceType: c5.4xlarge
+  LocalStorage:
+    RootVolume:
+      Size: 50
+  Networking:
+    SubnetId: <PUBLIC-SUBNET-ID>
+  DisableSimultaneousMultithreading: true
+  Ssh:
+    KeyName: <EC2-KEY-PAIR-NAME>
+Scheduling:
+  Scheduler: slurm
+  SlurmQueues:
+  - Name: c5n
+    ComputeResources:
+    - Name: c5n18xlarge
+      DisableSimultaneousMultithreading: true
+      Efa:
+        Enabled: true
+        GdrSupport: false
+      InstanceType: c5n.18xlarge
+      MinCount: 0
+      MaxCount: 10
+    ComputeSettings:
+      LocalStorage:
+        EphemeralVolume:
+          MountDir: /local/ephemeral
+        RootVolume:
+          Size: 50
+    Networking:
+      PlacementGroup:
+        Enabled: true
+      SubnetIds:
+      - <PRIVATE-SUBNET-ID>
+SharedStorage:
+  - MountDir: /shared      
+    Name: ebs
+    StorageType: Ebs
+    EbsSettings:
+      VolumeType: gp3
+      Size: 100
+  - MountDir: /scratch 
+    Name: fsx
+    StorageType: FsxLustre
+    FsxLustreSettings:
+      StorageCapacity: 1200
+      DeploymentType: SCRATCH_2
+      DataCompressionType: LZ4
+      ImportPath: s3:<PATH-TO-IMPORT-FILES>
