@@ -11,7 +11,7 @@ source /shared/OpenFOAM/OpenFOAM-v2012/etc/bashrc
 
 cp $FOAM_TUTORIALS/resources/geometry/motorBike.obj.gz constant/triSurface/
 
-# pre-processing
+# decomposing a mesh
 singularity exec openfoam-ub2004.sif \
 	surfaceFeatureExtract  > ./log/surfaceFeatureExtract.log 2>&1
 
@@ -21,7 +21,7 @@ singularity exec openfoam-ub2004.sif \
 singularity exec openfoam-ub2004.sif \
 	decomposePar -decomposeParDict system/decomposeParDict.hierarchical  > ./log/decomposePar.log 2>&1
 
-# Meshing
+# meshing
 mpirun -np $SLURM_NTASKS \
 	singularity exec openfoam-ub2004.sif \
 	snappyHexMesh -parallel -overwrite -decomposeParDict system/decomposeParDict.hierarchical   > ./log/snappyHexMesh.log 2>&1
@@ -45,7 +45,7 @@ mpirun -np $SLURM_NTASKS \
 ls -d processor* | xargs -i rm -rf ./{}/0
 ls -d processor* | xargs -i cp -r 0.orig ./{}/0
 
-# Run openfoam
+# processing
 mpirun -np $SLURM_NTASKS \
 	singularity exec openfoam-ub2004.sif \
 	potentialFoam -parallel -noFunctionObjects -initialiseUBCs -decomposeParDict system/decomposeParDict.ptscotch > ./log/potentialFoam.log 2>&1s
